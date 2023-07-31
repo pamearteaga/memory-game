@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authUser } from "../../store/auth/authThunks";
+import { getImagesList } from "../../store/images/imagesThunks";
 import Button from "../../ui/components/Button/Button";
 
 const AuthPage = () => {
@@ -17,12 +18,12 @@ const AuthPage = () => {
       ...formState,
       userName: inputValue,
     });
-    if(inputValue.length < 3) {
-      disabledButtonSubmit(true)
-      showErrorLogIn(true)
+    if (inputValue.length < 3) {
+      disabledButtonSubmit(true);
+      showErrorLogIn(true);
     } else {
-      disabledButtonSubmit(false)
-      showErrorLogIn(false)
+      disabledButtonSubmit(false);
+      showErrorLogIn(false);
     }
   };
 
@@ -55,7 +56,12 @@ const AuthPage = () => {
           autoComplete="off"
         />
         {errorLogIn && <p>The name must have at least 3 characters.</p>}
-        <Button text="Start Game" type="submit" disabled={buttonSubmit} />
+        <Button
+          text="Start Game"
+          type="submit"
+          disabled={buttonSubmit}
+          handleOnClick={() => dispatch(getImagesList())}
+        />
       </form>
     </div>
   );

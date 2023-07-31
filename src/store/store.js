@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -10,14 +10,13 @@ const persistConfig = {
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, authSlice)
+const reducers = combineReducers({ auth: authSlice, images: imagesSlice });
+
+const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
-  reducer: {
-    auth: persistedReducer,
-    images: imagesSlice,
-    middleware: [thunk]
-  },
+  reducer: persistedReducer,
+  middleware: [thunk]
 });
 
 export const persistor = persistStore(store)

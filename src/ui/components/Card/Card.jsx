@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 //import styles from './styles.module.scss'
 
-const Card = ({ open, id, imgId, title, url, handleOnClick }) => {
+const Card = ({ open, id, title, url, handleOnClick }) => {
   return (
     <>
       {open ? (
-        <div key={id} className="h-44 w-full overflow-hidden" onClick={() => handleOnClick()}>
+        <div key={id} className="h-44 w-full overflow-hidden">
           <img className="object-cover" src={url} alt={title} />
         </div>
       ) : (
