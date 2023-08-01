@@ -1,0 +1,17 @@
+.scores {
+  @apply flex flex-row items-center font-primary;
+  &__text {
+    @apply text-xl font-semibold mr-3;
+    &:first-child {
+      @apply hidden md:block;
+    }
+  }
+  &__right {
+    @extend .scores__text;
+    @apply text-green text-lg;
+  }
+  &__wrong {
+    @extend .scores__right;
+    @apply text-red;
+  }
+}

@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from "./styles.module.scss"
 
-const Scores = ({hits, misses}) => {
+const Scores = ({right, wrong}) => {
   return (
-    <div className="flex flex-row">
-        <p className=" text-green">hits {hits}</p> \\
-        <p className="text-red">misses {misses}</p>
+    <div className={styles.scores}>
+        <p className={styles.scores__text}>Scores:</p>
+        <p className={styles.scores__right}>Right {right}</p>
+        <p className={styles.scores__text}>|</p>
+        <p className={styles.scores__wrong}>Wrong {wrong}</p>
       </div>
   )
 }

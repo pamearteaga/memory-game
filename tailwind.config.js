@@ -32,6 +32,7 @@ module.exports = {
         transparent: "transparent",
         white: "#FFFFFF",
         black: "#000000",
+        yellow: "#CCFF00"
       },
       fontFamily: {
         primary: ["Montserrat", "sans-serif"],
@@ -56,6 +57,8 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT: "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);",
+        plain: "0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.4)",
+        hover: "0 14px 28px rgba(0,0,0,0.5), 0 14px 14px rgba(0,0,0,0.5)"
       },
     },
   },

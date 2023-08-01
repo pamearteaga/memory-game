@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-//import styles from "./styles.module.scss";
+import styles from "./styles.module.scss";
 
 const Button = ({ text, type, disabled, handleOnClick }) => {
   return (
     <>
-      <button
+      <button 
+        className={styles.button}
         typeof={type}
         disabled={disabled}
         onClick={() => handleOnClick()}

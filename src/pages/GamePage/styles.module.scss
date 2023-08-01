@@ -1,0 +1,21 @@
+.game {
+  @apply flex items-center flex-col max-w-7xl w-full h-screen pt-3 pb-6 lg:pt-5 lg:pb-9 m-auto pl-6 pr-6 lg:pl-5 lg:pr-5;
+  &__head {
+    @apply w-full flex flex-col md:flex-row justify-between md:items-center;
+  }
+  &__title {
+    @apply font-primary text-3xl font-bold;
+  }
+  &__username {
+    @extend .game__title;
+    @apply text-xl font-medium;
+  }
+  &__name { 
+    @extend .game__username;
+    @apply text-yellow font-semibold;
+  }
+  &__top {
+    @extend .game__head;
+    @apply max-w-3xl mt-5 mb-5 flex-row items-center;
+  }
+}

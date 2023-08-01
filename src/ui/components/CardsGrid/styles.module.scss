@@ -1,6 +1,6 @@
 .cards {
-  @apply block mx-auto w-full max-w-5xl;
+  @apply block mx-auto w-full max-w-3xl;
   &__grid {
-    @apply grid gap-4 grid-cols-4 grid-rows-3;
+    @apply grid gap-4 md:grid-cols-4 grid-cols-3 grid-rows-3;
   }
 }
