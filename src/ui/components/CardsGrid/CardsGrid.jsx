@@ -5,7 +5,7 @@ import Spinner from "../Spinner/Spinner";
 import Button from "../Button/Button";
 import styles from "./styles.module.scss";
 
-const CardsGrid = ({ imagesList, score, userName, handleOnClick }) => {
+const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, newGame }) => {
   return (
     <div className={styles.cards}>
       <>
@@ -17,14 +17,14 @@ const CardsGrid = ({ imagesList, score, userName, handleOnClick }) => {
                   <Card
                     key={image.id}
                     {...image}
-                    handleOnClick={() => handleOnClick(image.id, image.imgId)}
+                    handleOnClick={() => disabledFunc && handleOnClick(image.id, image.imgId)}
                   />
                 ))}
               </div>
             ) : (
               <div>
                 <p>Good job {userName}!</p>
-                <Button text={"New game"} />
+                <Button text={"New game"} handleOnClick={() => newGame()} />
               </div>
             )}
           </>

@@ -17,7 +17,7 @@ const GamePage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [scores, setScores] = useState({ right: 0, wrong: 0 });
 
-  //handle image data before iterating
+  //handle image data before using it
   const cardImageslist = (list) => {
     /* shuffle the list and slice the first six images 
     to get different images every time a game is started */
@@ -45,6 +45,7 @@ const GamePage = () => {
 
   //show image when card is clicked
   const openCard = (id) => {
+    //looks for the card ppr id in the list and opens it
     const openImage = cardList.map((img) => {
       if (img.id === id) {
         selectedCards.length < 2 &&
@@ -63,9 +64,11 @@ const GamePage = () => {
   //compare every time a card is selected
   const checkSelectedCard = (imgId) => {
     if (selectedCards.length === 1) {
+      // check if there ir a card with same imgId
       const card = selectedCards.find((item) => item.imgId === imgId);
       if (card) {
         setScores({ ...scores, right: scores.right + 1 });
+        setSelectedCards([]);
       } else {
         setScores({ ...scores, wrong: scores.wrong + 1 });
         const checkCard = cardList.map((img) => {
@@ -75,20 +78,18 @@ const GamePage = () => {
             return img;
           }
         });
+        /* this is to give the wrong card a second to 
+        show itself before closing it again */
         setTimeout(() => {
           setCardList(checkCard);
+          setSelectedCards([]);
         }, 1000);
       }
-      setSelectedCards([]);
     }
   };
 
-  const restartGame = () => {
-    setCardList(
-      cardList.map((img) => {
-        return { ...img, open: false };
-      })
-    );
+  const newGame = () => {
+    cardImageslist(images);
     setSelectedCards([])
     setScores({ right: 0, wrong: 0 })
   }
@@ -110,7 +111,7 @@ const GamePage = () => {
                 <IconArrow /> Restart
               </>
             }
-            handleOnClick={() => restartGame()}
+            handleOnClick={() => newGame()}
           />
         )}
       </div>
@@ -118,10 +119,12 @@ const GamePage = () => {
         imagesList={cardList}
         userName={userName}
         score={scores.right}
+        disabledFunc={selectedCards.length === 2 ? false : true}
         handleOnClick={(id, imgId) => {
           openCard(id);
           checkSelectedCard(imgId);
         }}
+        newGame={newGame}
       />
     </div>
   );
