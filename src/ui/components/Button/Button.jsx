@@ -6,6 +6,7 @@ const Button = ({ text, type, disabled, handleOnClick }) => {
   return (
     <>
       <button 
+        data-testid={"button"}
         className={styles.button}
         typeof={type}
         disabled={disabled}

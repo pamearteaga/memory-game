@@ -6,14 +6,21 @@ import Button from "../Button/Button";
 import styles from "./styles.module.scss";
 import Fireworks from "../../assets/animations/Fireworks";
 
-const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, newGame }) => {
+const CardsGrid = ({
+  imagesList,
+  score,
+  userName,
+  disabledFunc,
+  handleOnClick,
+  newGame,
+}) => {
   return (
-    <div className={styles.cards}>
+    <div className={styles.cards} data-testid={"cardsgrid"}>
       <>
         {imagesList ? (
           <>
             {score < 6 ? (
-              <div className={styles.cards__grid}>
+              <div className={styles.cards__grid} data-testid={"grid"}>
                 {imagesList.map((image) => (
                   <Card
                     key={image.id}
@@ -25,7 +32,10 @@ const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, n
                 ))}
               </div>
             ) : (
-              <div className={styles.cards__message}>
+              <div
+                className={styles.cards__message}
+                data-testid={"congratulations"}
+              >
                 <div className={styles.cards__new}>
                   <p className={styles.cards__text}>Good job</p>
                   <h3 className={styles["cards__text--user"]}>{userName}</h3>
@@ -43,6 +53,22 @@ const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, n
   );
 };
 
-CardsGrid.propTypes = {};
+CardsGrid.propTypes = {
+  imagesList: PropTypes.array,
+  score: PropTypes.number,
+  userName: PropTypes.string,
+  disabledFunc: PropTypes.bool,
+  handleOnClick: PropTypes.func,
+  newGame: PropTypes.func,
+};
+
+CardsGrid.defaultProps = {
+  imagesList: null,
+  score: 0,
+  userName: "Player",
+  disabledFunc: false,
+  handleOnClick: () => false,
+  newGame: () => false,
+};
 
 export default CardsGrid;
