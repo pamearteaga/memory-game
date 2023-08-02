@@ -1,16 +1,3 @@
 .button {
-  @apply pl-4 pr-4 pt-2 pb-2 border border-yellow rounded-lg object-contain w-fit font-primary font-semibold transition-all flex flex-row items-center;
-  &:hover {
-    @extend .button;
-    @apply border-grey-light3;
-  }
-  /* svg {
-    fill: #89929b;
-    transition: all 0.2s;
-  }
-  &:hover {
-    svg {
-      fill: white;
-    }
-  } */
+  @apply pl-4 pr-4 pt-2 pb-2 border border-yellow rounded-lg object-contain w-fit h-fit font-primary font-semibold transition-all flex flex-row items-center cursor-pointer hover:border-grey-light3 hover:transition;
 }

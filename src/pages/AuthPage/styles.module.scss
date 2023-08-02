@@ -1,0 +1,42 @@
+.auth {
+  @apply w-full h-screen min-h-screen bg-grey-dark1 flex justify-center items-center;
+  background: linear-gradient(45deg, #161b22 10%, transparent 11%, transparent 89%, #161b22 90%), linear-gradient(135deg, #161b22 10%, transparent 11%, transparent 89%, #161b22 90%), radial-gradient(circle, transparent 25%, #0d1117 26%), linear-gradient(45deg, transparent 46%, #161b22 47%, #161b22 52%, transparent 53%), linear-gradient(135deg, transparent 46%, #161b22 47%, #161b22 52%, transparent 53%);
+  background-size: 3em 3em;
+  background-color: #0d1117;
+  opacity: 1;
+  &__wrap {
+    @apply w-full h-screen md:h-auto md:max-w-2xl p-8;
+  }
+  &__content {
+    @apply bg-grey-dark4 shadow w-full h-full rounded-2xl pl-6 pr-6 pt-8 pb-7 flex flex-col items-center justify-center;
+  }
+  &__title {
+    @apply font-primary font-bold text-2xl text-center leading-tight block;
+    &--yellow {
+      @extend .auth__title;
+      @apply text-yellow text-3xl mb-6;
+    }
+    &--sub {
+      @extend .auth__title;
+      @apply text-lg font-semibold mb-4;
+    }
+  }
+  &__form {
+    @apply w-full justify-between items-end flex flex-col md:flex-row mt-5;
+  }
+  &__field {
+    @apply flex flex-col w-full md:w-3/4 md:h-24;
+  }
+  &__label {
+    @apply font-primary text-base md:text-lg mb-1;
+  }
+  &__button {
+    @apply flex md:justify-end w-full md:w-1/4 mt-4 md:mt-0 mb-6;
+  }
+  &__input {
+    @apply bg-transparent h-10 border border-grey-light3 rounded-lg pl-4 pr-4 font-primary focus:outline-white;
+  }
+  &__error {
+    @apply font-primary text-red text-sm md:text-tiny mt-1;
+  }
+}

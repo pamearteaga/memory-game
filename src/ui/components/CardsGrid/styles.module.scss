@@ -3,4 +3,19 @@
   &__grid {
     @apply grid gap-4 md:grid-cols-4 grid-cols-3 grid-rows-3;
   }
+  &__message {
+    @apply flex flex-col justify-center items-center relative;
+  }
+  &__new {
+    @extend .cards__message;
+    @apply absolute;
+  }
+  &__text {
+    @apply font-primary text-3xl font-bold;
+    &--user {
+      @extend .cards__text;
+      @apply text-2xl break-words max-w-xs text-center mb-9;
+    }
+  }
+  
 }

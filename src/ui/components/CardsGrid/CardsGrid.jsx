@@ -4,6 +4,7 @@ import Card from "../Card/Card";
 import Spinner from "../Spinner/Spinner";
 import Button from "../Button/Button";
 import styles from "./styles.module.scss";
+import Fireworks from "../../assets/animations/Fireworks";
 
 const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, newGame }) => {
   return (
@@ -17,14 +18,20 @@ const CardsGrid = ({ imagesList, score, userName, disabledFunc, handleOnClick, n
                   <Card
                     key={image.id}
                     {...image}
-                    handleOnClick={() => disabledFunc && handleOnClick(image.id, image.imgId)}
+                    handleOnClick={() =>
+                      disabledFunc && handleOnClick(image.id, image.imgId)
+                    }
                   />
                 ))}
               </div>
             ) : (
-              <div>
-                <p>Good job {userName}!</p>
-                <Button text={"New game"} handleOnClick={() => newGame()} />
+              <div className={styles.cards__message}>
+                <div className={styles.cards__new}>
+                  <p className={styles.cards__text}>Good job</p>
+                  <h3 className={styles["cards__text--user"]}>{userName}</h3>
+                  <Button text={"New game"} handleOnClick={() => newGame()} />
+                </div>
+                <Fireworks />
               </div>
             )}
           </>

@@ -79,7 +79,8 @@ const GamePage = () => {
           }
         });
         /* this is to give the wrong card a second to 
-        show itself before closing it again */
+        show itself before closing it again and
+        prevent more cards from being selected */
         setTimeout(() => {
           setCardList(checkCard);
           setSelectedCards([]);
@@ -105,14 +106,7 @@ const GamePage = () => {
       <div className={styles.game__top}>
         <Scores {...scores} />
         {scores.right < 6 && (
-          <Button
-            text={
-              <>
-                <IconArrow /> Restart
-              </>
-            }
-            handleOnClick={() => newGame()}
-          />
+          <Button text={<><IconArrow /> Restart</>} handleOnClick={() => newGame()} />
         )}
       </div>
       <CardsGrid

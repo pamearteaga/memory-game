@@ -8,7 +8,7 @@
   }
   &__username {
     @extend .game__title;
-    @apply text-xl font-medium;
+    @apply text-xl font-medium max-w-xs truncate text-ellipsis overflow-hidden;
   }
   &__name { 
     @extend .game__username;

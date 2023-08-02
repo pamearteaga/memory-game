@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { authUser } from "../../store/auth/authThunks";
 import { getImagesList } from "../../store/images/imagesThunks";
 import Button from "../../ui/components/Button/Button";
+import styles from "./styles.module.scss";
 
 const AuthPage = () => {
   const dispatch = useDispatch();
@@ -38,31 +39,45 @@ const AuthPage = () => {
   };
 
   return (
-    <div>
-      <p>
-        Welcome to the Memory Game! Get ready to challenge your memory and have
-        some fun.
-      </p>
-      <form onSubmit={onSubmit} className="flex flex-col max-w-md mt-5 ml-5">
-        <label htmlFor="username">To begin, please enter your name here</label>
-        <input
-          type="text"
-          placeholder="Your name"
-          name="username"
-          value={formState.userName}
-          onChange={onInputChange}
-          required
-          minLength={3}
-          autoComplete="off"
-        />
-        {errorLogIn && <p>The name must have at least 3 characters.</p>}
-        <Button
-          text="Start Game"
-          type="submit"
-          disabled={buttonSubmit}
-          handleOnClick={() => dispatch(getImagesList())}
-        />
-      </form>
+    <div className={styles.auth}>
+      <div className={styles.auth__wrap}>
+        <div className={styles.auth__content}>
+          <h1 className={styles.auth__title}>Welcome to</h1>
+          <h1 className={styles["auth__title--yellow"]}>Memory Game</h1>
+          <h3 className={styles["auth__title--sub"]}>Get ready to challenge your memory and have some fun.</h3>
+          <form onSubmit={onSubmit} className={styles.auth__form}>
+            <div className={styles.auth__field}>
+              <label htmlFor="username" className={styles.auth__label}>
+                To begin, please enter your name
+              </label>
+              <input
+                className={styles.auth__input}
+                type="text"
+                placeholder="Your name"
+                name="username"
+                value={formState.userName}
+                onChange={onInputChange}
+                required
+                minLength={3}
+                autoComplete="off"
+              />
+              {errorLogIn && (
+                <p className={styles.auth__error}>
+                  The name must have at least 3 characters.
+                </p>
+              )}
+            </div>
+            <div className={styles.auth__button}>
+              <Button
+                text="Start Game"
+                type="submit"
+                disabled={buttonSubmit}
+                handleOnClick={() => dispatch(getImagesList())}
+              />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
